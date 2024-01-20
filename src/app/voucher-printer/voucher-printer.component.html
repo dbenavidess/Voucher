@@ -1,0 +1,133 @@
+<header>
+    <h1>TU VIAJE COMIENZA AQUI!</h1>
+    <p>
+        <strong>{{voucher.salesman.name}}</strong><br>
+        RNT: {{voucher.salesman.RNT}}<br>
+        Viaja y Vive una Nueva Aventura<br>
+        {{voucher.salesman.contact}}
+    </p>
+</header>
+<main>
+    <h2>HOLA!</h2>
+    <p>{{voucher.client.name}}</p>
+    <p>Esta es nuestra propuesta cotización para tu viaje. Nos alegra poder asesorarte y brindarte las mejores opciones para que tengas una experiencia inolvidable en tus vacaciones.</p>
+    
+    <table>
+        <tr>
+            <th>Fecha Viaje</th>
+            <th># Pasajeros</th>
+        </tr>
+        <tr>
+            <td>{{voucher.tickets.itinerary[0].date | date:'fullDate'}} a {{  voucher.tickets.itinerary[voucher.tickets.itinerary.length - 1].date | date:'fullDate'}}</td>
+            <td>{{voucher.client.numberPassengers}}</td>
+        </tr>
+    </table>
+    <p>
+        Plan / Producto: {{voucher.planName}}<br>
+    </p>
+    <table>
+        <tr>
+            <th>Precio Total por los viajeros</th>
+            <th>$ {{voucher.bill.total | currency}}</th>
+        </tr>
+        @for (item of voucher.bill.billItems; track $index) {
+            <tr>
+                <td>{{item.name}}</td>
+                <td>$ {{item.value | currency}}</td>
+            </tr>
+        }
+    </table>
+
+    <p>Nota: Tarifas sujetas a cambios, de acuerdo a disponibilidad aérea y hotelera al momento de tomar reserva.</p>
+    
+    <section>
+        <h2>Tiquetes</h2>
+        <h3>información</h3>
+        <table>
+            <tr>
+                <th>Max. maletas Morral</th>
+                <th>Peso x maleta de morral</th>
+                <th>Max. maletas Cabina</th>
+                <th>Peso x maleta en cabina</th>
+                <th>Max. maletas bodega</th>
+            </tr>
+            <tr>
+                <td>{{voucher.tickets.luggageInformation.maxHandLuggage}}</td>
+                <td>{{voucher.tickets.luggageInformation.handLuggageWeight}} kg</td>
+                <td>{{voucher.tickets.luggageInformation.maxLuggage}}</td>
+                <td>{{voucher.tickets.luggageInformation.LuggageWeight}}</td>
+                <td>{{voucher.tickets.luggageInformation.maxAirplaneHold}}</td>
+            </tr>
+        </table>
+    </section>
+    <section>
+        <h3>Itinerario</h3>
+        @for (journey of voucher.tickets.itinerary; track $index) {
+            <p>{{journey.name}}</p>
+            <table>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Origen</th>
+                    <th>Destino</th>
+                    <th>Vuelo</th>
+                    <th>Salida</th>
+                    <th>Llegada</th>
+                </tr>
+                <tr>
+                    <td>{{journey.date | date:'fullDate'}}</td>
+                    <td>{{journey.origin}}</td>
+                    <td>{{journey.destiny}}</td>
+                    <td>{{journey.flightType}}</td>
+                    <td>{{journey.departure}}</td>
+                    <td>{{journey.arrival}}</td>
+                </tr>
+            </table>
+        }
+    </section>
+    <section>
+        <h2>Traslado</h2>
+        <h3>información</h3>
+        <table>
+            <tr>
+                <th>Tipo</th>
+                <th>Ruta</th>
+                <th>Primer uso</th>
+                <th>Segundo uso</th>
+            </tr>
+            <tr>
+                <td>{{voucher.tickets.TransferInformation.type}}</td>
+                <td>{{voucher.tickets.TransferInformation.route}}</td>
+                <td>{{voucher.tickets.TransferInformation.firstUse | date:'fullDate'}}</td>
+                <td>{{voucher.tickets.TransferInformation.secondUse | date:'fullDate'}}</td>
+            </tr>
+        </table>
+    </section>
+    <section>
+        <h2>Alojamiento</h2>
+        <h3>{{voucher.hotel.packageName}}</h3>
+        <p>{{voucher.hotel.servicesSummary}}</p>
+        <h3>información</h3>
+        <table>
+            <tr>
+                <th>Check-In</th>
+                <th>Hora</th>
+                <th>Check-Out</th>
+                <th>Hora</th>
+            </tr>
+            <tr>
+                <td>{{voucher.hotel.checkInDate | date:'fullDate'}}</td>
+                <td>{{voucher.hotel.checkInTime}}</td>
+                <td>{{voucher.hotel.checkOutDate | date:'fullDate'}}</td>
+                <td>{{voucher.hotel.checkoutTime}}</td>
+            </tr>
+        </table>
+
+    </section>
+    
+    
+
+
+
+
+</main>
+

@@ -1,0 +1,57 @@
+/* General styling */
+body {
+    font-family: sans-serif;
+    margin: 40px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 16px;
+    color: #666;
+}
+
+main {
+    width: 800px;
+    margin: 0 auto; /* Center the main content */
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+/* Image incorporation */
+header img {
+    width: 200px; /* Adjust as needed */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+main img {
+    float: right; /* Float images to the right */
+    margin-left: 20px; /* Add some space between images and text */
+    width: 300px; /* Adjust as needed */
+    height: auto;
+}
