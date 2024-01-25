@@ -54,7 +54,7 @@ export class VoucherFormComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.voucher = this.voucherFakeServiceService.getPayload()
+    this.voucherFakeServiceService.setPayload(this.voucher)
   }
 
   setStep(index: number) {

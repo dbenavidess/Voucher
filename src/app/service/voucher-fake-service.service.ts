@@ -6,7 +6,7 @@ import { Voucher } from '../Model/Voucher';
 })
 export class VoucherFakeServiceService {
 
-  private payload : Voucher = JSON.parse(localStorage.getItem("savedValue") || '{}')
+  private payload! : Voucher
 
   constructor() { }
   
