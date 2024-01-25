@@ -18,7 +18,7 @@ export class VoucherPrinterComponent implements OnInit {
     this.voucher = voucherFakeServiceService.getPayload()
   }
   ngOnInit(): void {
-    this.voucher = JSON.parse(localStorage.getItem("savedValue") || '{}')
   }
+  
 
 }
