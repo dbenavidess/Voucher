@@ -137,7 +137,7 @@
         <mat-icon>edit</mat-icon>
     </button>
     <br>
-    <button mat-fab color="primary" aria-label="Print" [printTitle]="voucher.planName + '_' + voucher.client.name" printSectionId="print-section"
+    <button mat-fab color="primary" aria-label="Print" [closeWindow]="false" [printTitle]="voucher.planName + '_' + voucher.client.name" printSectionId="print-section"
     [useExistingCss]="true"    ngxPrint>
         <mat-icon>print</mat-icon>
     </button>

@@ -89,7 +89,7 @@ export class VoucherFormComponent implements OnInit{
 
   onSubmit(){
     if (!this.isValid()){
-      this.openSnackBar("Debe añadir al menos un trayecto","Deacuedo")
+      this.openSnackBar("Debe añadir al menos un trayecto","Deacuerdo")
       return
     }
     this.voucherFakeServiceService.setPayload(this.voucher) 
