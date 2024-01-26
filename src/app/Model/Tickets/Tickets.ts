@@ -7,11 +7,9 @@ export class Tickets{
     public luggageInformation : Luggage
     public TransferInformation : Transfer
 
-    constructor(itinerary : Journey[],
-        luggageInformation : Luggage,
-        TransferInformation : Transfer) {
-            this.itinerary = itinerary
-            this.luggageInformation = luggageInformation
-            this.TransferInformation = TransferInformation
+    constructor() {
+        this.luggageInformation = new Luggage(0,0,0,0,0)
+        this.TransferInformation = new Transfer("","",new Date(),new Date())
+        this.itinerary = []
     }
 }

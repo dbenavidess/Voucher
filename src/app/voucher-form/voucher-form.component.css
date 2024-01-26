@@ -4,3 +4,13 @@
 .mdc-list-item.mdc-list-item--with-one-line {
   height: auto;
 }
+
+.floating-div{
+  position:fixed;
+  bottom:40px;
+  right:40px;
+}
+
+h1{
+  text-align: center;
+}

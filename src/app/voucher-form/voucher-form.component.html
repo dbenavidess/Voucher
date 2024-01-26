@@ -1,3 +1,6 @@
+<header>
+    <h1>Datos Voucher</h1>
+</header>
 <form #voucherForm="ngForm" (ngSubmit)="onSubmit()">
     <mat-accordion class="example-headers-align">
         <mat-expansion-panel name="Commercial information" [expanded]="step === 0" (opened)="setStep(0)">
@@ -6,26 +9,30 @@
                     Datos comerciales
                 </mat-panel-title>
                 <mat-panel-description>
-                    Completado????
+                    Clic para expandir
                 </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-form-field class="example-full-width">
                 <mat-label>Nombre agencia / vendedor</mat-label>
-                <input matInput placeholder="Jane Doe" [(ngModel)]="salesman.name" name = "salesmanName" >
+                <input matInput placeholder="Jane Doe" [(ngModel)]="this.voucher.salesman.name" name = "salesmanName" >
             </mat-form-field>
             <mat-divider></mat-divider>
             <mat-form-field class="example-full-width">
                 <mat-label>RNT</mat-label>
-                <input matInput placeholder="#" value="" type="number" inputmode="numeric" [(ngModel)]="salesman.RNT" name = "RNT">
+                <input matInput placeholder="#" value="" type="number" inputmode="numeric" [(ngModel)]="this.voucher.salesman.RNT" name = "RNT">
             </mat-form-field>
             <mat-divider></mat-divider>
             <mat-form-field class="example-full-width">
                 <mat-label>Número de contacto</mat-label>
-                <input matInput placeholder="#" type="tel" [(ngModel)]="salesman.contact" name = "contact">
+                <input matInput placeholder="#" type="tel" [(ngModel)]="this.voucher.salesman.contact" name = "contact">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <mat-label>Nombre del plan</mat-label>
+                <input matInput placeholder="Plan" type="text" [(ngModel)]="this.voucher.planName" name = "planName">
             </mat-form-field>
             <mat-action-row>
-                <button type='button' mat-button color="warn" (click)="prevStep()">Previous</button>
-                <button type='button' mat-button color="primary" (click)="nextStep()">Next</button>
+                <button type='button' mat-button color="warn" (click)="prevStep()">Anterior</button>
+                <button type='button' mat-button color="primary" (click)="nextStep()">Siguiente</button>
               </mat-action-row>
         </mat-expansion-panel>
         <mat-expansion-panel name="Client information" [expanded]="step === 1" (opened)="setStep(1)">
@@ -34,20 +41,20 @@
                     Datos cliente
                 </mat-panel-title>
                 <mat-panel-description>
-                    Completado????
+                    Clic para expandir
                 </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-form-field class="example-full-width">
                 <mat-label>Nombre cliente</mat-label>
-                <input matInput placeholder="Jhon Doe" type="text" [(ngModel)]="client.name" name = "clientName">
+                <input matInput placeholder="Jhon Doe" type="text" [(ngModel)]="this.voucher.client.name" name = "clientName">
             </mat-form-field>
             <mat-form-field class="example-full-width">
                 <mat-label>Cant. pasajeros</mat-label>
-                <input matInput placeholder="Jhon Doe" type="number" [(ngModel)]="client.numberPassengers" name = "numberPassengers">
+                <input matInput placeholder="Jhon Doe" type="number" [(ngModel)]="this.voucher.client.numberPassengers" name = "numberPassengers">
             </mat-form-field>
             <mat-action-row>
-                <button type='button' mat-button color="warn" (click)="prevStep()">Previous</button>
-                <button type='button' mat-button color="primary" (click)="nextStep()">Next</button>
+                <button type='button' mat-button color="warn" (click)="prevStep()">Anterior</button>
+                <button type='button' mat-button color="primary" (click)="nextStep()">Siguiente</button>
               </mat-action-row>
         </mat-expansion-panel>
         <mat-expansion-panel name="Voucher Detail" [expanded]="step === 2" (opened)="setStep(2)">
@@ -56,7 +63,7 @@
                     Detalle
                 </mat-panel-title>
                 <mat-panel-description>
-                    Completado????
+                    Clic para expandir
                 </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-form-field>
@@ -72,7 +79,7 @@
             </button>
 
             <mat-list role="list">
-                @for (item of bill.billItems; track $index) {
+                @for (item of this.voucher.bill.billItems; track $index) {
                     <mat-list-item role="listitem">
                         <p>{{item.name}}    $ {{item.value}}    
                             <button mat-icon-button type="button" color="warn" aria-label="delete item" (click)="deleteDetail($index)">
@@ -82,10 +89,10 @@
                     </mat-list-item>
                 }
             </mat-list>
-            <h1>Total: $ {{bill.getTotal()}}</h1>
+            <h1>Total: $ {{this.voucher.bill.getTotal()}}</h1>
             <mat-action-row>
-                <button type='button' mat-button color="warn" (click)="prevStep()">Previous</button>
-                <button type='button' mat-button color="primary" (click)="nextStep()">Next</button>
+                <button type='button' mat-button color="warn" (click)="prevStep()">Anterior</button>
+                <button type='button' mat-button color="primary" (click)="nextStep()">Siguiente</button>
               </mat-action-row>
         </mat-expansion-panel>
         <mat-expansion-panel name="Luggage" [expanded]="step === 3" (opened)="setStep(3)">
@@ -94,32 +101,32 @@
                     Equipaje
                 </mat-panel-title>
                 <mat-panel-description>
-                    Completado????
+                    Clic para expandir
                 </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-form-field>
                 <mat-label>Max.equipaje de mano</mat-label>
-                <input matInput placeholder="#" type="number" [(ngModel)]="tickets.luggageInformation.maxHandLuggage" name="maxHandLuggage">
+                <input matInput placeholder="#" type="number" [(ngModel)]="this.voucher.tickets.luggageInformation.maxHandLuggage" name="maxHandLuggage">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Peso x equipaje de mano</mat-label>
-                <input matInput placeholder="#" type="number" [(ngModel)]="tickets.luggageInformation.handLuggageWeight" name="handLuggageWeight">
+                <input matInput placeholder="#" type="number" [(ngModel)]="this.voucher.tickets.luggageInformation.handLuggageWeight" name="handLuggageWeight">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Max. maletas cabina</mat-label>
-                <input matInput placeholder="#" type="number" [(ngModel)]="tickets.luggageInformation.maxLuggage" name="maxLuggage">
+                <input matInput placeholder="#" type="number" [(ngModel)]="this.voucher.tickets.luggageInformation.maxLuggage" name="maxLuggage">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Peso x maletas cabina</mat-label>
-                <input matInput placeholder="#" type="number" [(ngModel)]="tickets.luggageInformation.LuggageWeight" name="LuggageWeight">
+                <input matInput placeholder="#" type="number" [(ngModel)]="this.voucher.tickets.luggageInformation.LuggageWeight" name="LuggageWeight">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Max. maletas bodega</mat-label>
-                <input matInput placeholder="#" type="number" [(ngModel)]="tickets.luggageInformation.maxAirplaneHold" name="maxAirplaneHold">
+                <input matInput placeholder="#" type="number" [(ngModel)]="this.voucher.tickets.luggageInformation.maxAirplaneHold" name="maxAirplaneHold">
             </mat-form-field>
             <mat-action-row>
-                <button type='button' mat-button color="warn" (click)="prevStep()">Previous</button>
-                <button type='button' mat-button color="primary" (click)="nextStep()">Next</button>
+                <button type='button' mat-button color="warn" (click)="prevStep()">Anterior</button>
+                <button type='button' mat-button color="primary" (click)="nextStep()">Siguiente</button>
               </mat-action-row>
         </mat-expansion-panel>
         <mat-expansion-panel name="Itinerary" [expanded]="step === 4" (opened)="setStep(4)">
@@ -128,7 +135,7 @@
                     Ticketes
                 </mat-panel-title>
                 <mat-panel-description>
-                    Completado????
+                    Clic para expandir
                 </mat-panel-description>
             </mat-expansion-panel-header>
             <section>
@@ -137,7 +144,7 @@
                 </button>
 
                 <mat-list role="list">
-                    @for(journey of tickets.itinerary; track $index) {
+                    @for(journey of this.voucher.tickets.itinerary; track $index) {
                         <mat-list-item role="listitem">
                             <mat-form-field>
                                 <mat-label>Descripción</mat-label>
@@ -184,8 +191,8 @@
                 </mat-list>
             </section>
             <mat-action-row>
-                <button type='button' mat-button color="warn" (click)="prevStep()">Previous</button>
-                <button type='button' mat-button color="primary" (click)="nextStep()">Next</button>
+                <button type='button' mat-button color="warn" (click)="prevStep()">Anterior</button>
+                <button type='button' mat-button color="primary" (click)="nextStep()">Siguiente</button>
               </mat-action-row>
         </mat-expansion-panel>
         <mat-expansion-panel name="Transfer" [expanded]="step === 5" (opened)="setStep(5)">
@@ -194,35 +201,35 @@
                     Traslado
                 </mat-panel-title>
                 <mat-panel-description>
-                    Completado????
+                    Clic para expandir
                 </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-form-field>
                 <mat-label>Tipo</mat-label>
-                <input matInput placeholder="Tipo" type="text" [(ngModel)]="tickets.TransferInformation.type" name = "TransferType">
+                <input matInput placeholder="Tipo" type="text" [(ngModel)]="this.voucher.tickets.TransferInformation.type" name = "TransferType">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Ruta</mat-label>
-                <input matInput placeholder="Ruta" type="text" [(ngModel)]="tickets.TransferInformation.route" name = "TransferRoute">
+                <input matInput placeholder="Ruta" type="text" [(ngModel)]="this.voucher.tickets.TransferInformation.route" name = "TransferRoute">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Primer uso</mat-label>
-                <input matInput [matDatepicker]="TransferFirstUse" [(ngModel)]="tickets.TransferInformation.firstUse" name = "TransferFirstUse">
+                <input matInput [matDatepicker]="TransferFirstUse" [(ngModel)]="this.voucher.tickets.TransferInformation.firstUse" name = "TransferFirstUse">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="TransferFirstUse"></mat-datepicker-toggle>
                 <mat-datepicker #TransferFirstUse></mat-datepicker>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Segundo uso</mat-label>
-                <input matInput [matDatepicker]="TransferSecondUse" [(ngModel)]="tickets.TransferInformation.secondUse" name = "TransferSecondUse">
+                <input matInput [matDatepicker]="TransferSecondUse" [(ngModel)]="this.voucher.tickets.TransferInformation.secondUse" name = "TransferSecondUse">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="TransferSecondUse"></mat-datepicker-toggle>
                 <mat-datepicker #TransferSecondUse></mat-datepicker>
             </mat-form-field>
 
             <mat-action-row>
-                <button type='button' mat-button color="warn" (click)="prevStep()">Previous</button>
-                <button type='button' mat-button color="primary" (click)="nextStep()">Next</button>
+                <button type='button' mat-button color="warn" (click)="prevStep()">Anterior</button>
+                <button type='button' mat-button color="primary" (click)="nextStep()">Siguiente</button>
               </mat-action-row>
         </mat-expansion-panel>
         <mat-expansion-panel name="Hotel" [expanded]="step === 6" (opened)="setStep(6)">
@@ -231,55 +238,57 @@
                     Alojamiento
                 </mat-panel-title>
                 <mat-panel-description>
-                    Completado????
+                    Clic para expandir
                 </mat-panel-description>
             </mat-expansion-panel-header>
             <mat-form-field class="example-full-width">
                 <mat-label>Nombre paquete</mat-label>
-                <input matInput placeholder="Tipo" type="text" [(ngModel)]="hotel.packageName" name = "packageName">
+                <input matInput placeholder="Tipo" type="text" [(ngModel)]="this.voucher.hotel.packageName" name = "packageName">
             </mat-form-field>
             <br>
             <mat-form-field>
                 <mat-label>Check in</mat-label>
-                <input matInput [matDatepicker]="checkIn" [(ngModel)]="hotel.checkInDate" name = "checkInDate">
+                <input matInput [matDatepicker]="checkIn" [(ngModel)]="this.voucher.hotel.checkInDate" name = "checkInDate">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="checkIn"></mat-datepicker-toggle>
                 <mat-datepicker #checkIn></mat-datepicker>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Hora check in</mat-label>
-                <input matInput type="text" [ngxTimepicker]="checkInTime" readonly [(ngModel)]="hotel.checkInTime" name = "checkInTime">
+                <input matInput type="text" [ngxTimepicker]="checkInTime" readonly [(ngModel)]="this.voucher.hotel.checkInTime" name = "checkInTime">
                 <ngx-material-timepicker #checkInTime></ngx-material-timepicker>
                 <mat-hint>HH:MM AM/PM</mat-hint>
             </mat-form-field>
             -
             <mat-form-field>
                 <mat-label>Check out</mat-label>
-                <input matInput [matDatepicker]="checkOut" [(ngModel)]="hotel.checkOutDate" name = "checkOutDate">
+                <input matInput [matDatepicker]="checkOut" [(ngModel)]="this.voucher.hotel.checkOutDate" name = "checkOutDate">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="checkOut"></mat-datepicker-toggle>
                 <mat-datepicker #checkOut></mat-datepicker>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Hora check out</mat-label>
-                <input matInput type="text" [ngxTimepicker]="checkoutTime" readonly [(ngModel)]="hotel.checkoutTime" name = "checkoutTime">
+                <input matInput type="text" [ngxTimepicker]="checkoutTime" readonly [(ngModel)]="this.voucher.hotel.checkoutTime" name = "checkoutTime">
                 <ngx-material-timepicker #checkoutTime></ngx-material-timepicker>
                 <mat-hint>HH:MM AM/PM</mat-hint>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
                 <mat-label>Descripción del paquete</mat-label>
-                <textarea matInput type = "text" [(ngModel)]="hotel.servicesSummary" name = "servicesSummary"></textarea>
+                <textarea matInput type = "text" [(ngModel)]="this.voucher.hotel.servicesSummary" name = "servicesSummary"></textarea>
               </mat-form-field>
 
             <mat-action-row>
-                <button type='button' mat-button color="warn" (click)="prevStep()">Previous</button>
-                <button type='button' mat-button color="primary" (click)="nextStep()">Next</button>
+                <button type='button' mat-button color="warn" (click)="prevStep()">Anterior</button>
+                <button type='button' mat-button color="primary" (click)="nextStep()">Siguiente</button>
             </mat-action-row>
         </mat-expansion-panel>
     </mat-accordion>
-
+<div class="floating-div">
     <button type='Submit' mat-flat-button  color="primary" >
-        Acabar
+        Listo
     </button>
+</div>
+    
 </form>

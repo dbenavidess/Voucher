@@ -3,7 +3,6 @@ import { Client } from "./Client";
 import { Hotel } from "./Hotel";
 import { Salesman } from "./Salesman";
 import { Tickets } from "./Tickets/Tickets";
-
 export class Voucher {
     public planName : string
     public tickets : Tickets
@@ -11,17 +10,13 @@ export class Voucher {
     public bill : Bill 
     public salesman : Salesman
     public client : Client
-    constructor(tickets : Tickets,
-        hotel : Hotel,
-        bill : Bill,
-        salesman : Salesman,
-        client : Client,
-        planName : string) {
+    constructor() {
+            this.bill = new Bill([])
+            let tickets = new Tickets()
+            this.client = new Client("",1)
+            this.salesman = new Salesman("","","","")
+            this.hotel = new Hotel(new Date,"00:00",new Date(),"00:00","","")
             this.tickets = tickets
-            this.hotel = hotel
-            this.bill = bill
-            this.salesman = salesman
-            this.client = client
-            this.planName = planName
+            this.planName = ""
     }
 }

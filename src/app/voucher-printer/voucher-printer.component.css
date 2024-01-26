@@ -1,18 +1,13 @@
-/* General styling */
 body {
     font-family: sans-serif;
     margin: 40px;
 }
 
 header {
+    width: 800px;
     text-align: center;
     margin-bottom: 40px;
-}
-
-header h1 {
-    font-size: 36px;
-    color: #333;
-    margin-bottom: 10px;
+    margin: 0 auto; /* Center the main content */
 }
 
 header p {
@@ -25,15 +20,58 @@ main {
     margin: 0 auto; /* Center the main content */
 }
 
-h2 {
+.welcome-message{
+    background-color: #00d6cf;
+    font-size: 16px;
+    color : #fff;
+    text-align: center;
+}
+
+.travel-table{
+    font-size: 20px;
+    color: #000000;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.centered-text{
+    text-align: center;
+    font-size: 16px;
+}
+
+.pricing-table-header{
+    background-color: #ff8671;
+    font-size: 20px;
+    color: #ffffff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-weight: normal;
+}
+
+h1 {
     font-size: 24px;
-    margin-bottom: 20px;
+    background-color: #ff8671;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    background-color: #A0E7E5;
+    font-weight: bold;
+}
+
+h3{
+    font-weight: bold;
+    background-color: #eeeeee;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 th, td {
@@ -42,16 +80,24 @@ th, td {
     text-align: left;
 }
 
+th{
+    background-color: #eeeeee;
+}
+
 /* Image incorporation */
 header img {
     width: 200px; /* Adjust as needed */
-    height: auto;
+    height: 200px;
     margin-bottom: 20px;
 }
 
-main img {
-    float: right; /* Float images to the right */
-    margin-left: 20px; /* Add some space between images and text */
-    width: 300px; /* Adjust as needed */
-    height: auto;
+.floating-div{
+    position:fixed;
+    bottom:40px;
+    right:40px;
+}
+
+.multiline{
+    white-space: pre-wrap;
+    margin-bottom: 20px;
 }
